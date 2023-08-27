@@ -12,23 +12,18 @@ env:
   REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
 
 jobs:
-  login:
-    name: Log in to image registry
-    runs-on: ubuntu-20.04
-    steps:
-
-      - name: Log in to Quay.io
-        uses: redhat-actions/podman-login@v1
-        with:
-          username: ${{ env.REGISTRY_USER }}
-          password: ${{ env.REGISTRY_PASSWORD }}
-          registry: ${{ env.IMAGE_REGISTRY }}
-
   build-latest:
     name: Build and push image (latest)
     runs-on: ubuntu-latest
 
     steps:
+    - name: Log in to Quay.io image registry
+      uses: redhat-actions/podman-login@v1
+      with:
+        username: ${{ env.REGISTRY_USER }}
+        password: ${{ env.REGISTRY_PASSWORD }}
+        registry: ${{ env.IMAGE_REGISTRY }}
+
     - uses: actions/checkout@v3
 
     - name: Build Image
@@ -56,6 +51,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Log in to Quay.io image registry
+      uses: redhat-actions/podman-login@v1
+      with:
+        username: ${{ env.REGISTRY_USER }}
+        password: ${{ env.REGISTRY_PASSWORD }}
+        registry: ${{ env.IMAGE_REGISTRY }}
+
     - uses: actions/checkout@v3
 
     - name: Build Image
@@ -83,6 +85,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Log in to Quay.io image registry
+      uses: redhat-actions/podman-login@v1
+      with:
+        username: ${{ env.REGISTRY_USER }}
+        password: ${{ env.REGISTRY_PASSWORD }}
+        registry: ${{ env.IMAGE_REGISTRY }}
+
     - uses: actions/checkout@v3
 
     - name: Build Image
