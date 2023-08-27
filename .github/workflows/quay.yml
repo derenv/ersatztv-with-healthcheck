@@ -52,7 +52,7 @@ jobs:
       run: echo "Image pushed to ${{ steps.push-to-quay.outputs.registry-paths }}"
 
   build-nvidia:
-    name: Build and push image (latest)
+    name: Build and push image (latest-nvidia)
     runs-on: ubuntu-latest
 
     steps:
@@ -79,7 +79,7 @@ jobs:
       run: echo "Image pushed to ${{ steps.push-to-quay.outputs.registry-paths }}"
 
   build-vaapi:
-    name: Build and push image (latest)
+    name: Build and push image (latest-vaapi)
     runs-on: ubuntu-latest
 
     steps:
